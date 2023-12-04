@@ -1,0 +1,32 @@
+﻿@model List<FinalProject.Models.GameReview>
+
+
+@{
+    ViewData["Title"] = "Game Ratings";
+}
+
+<div class="container mt-5">
+    <h2>Game Ratings</h2>
+
+    @foreach (var gameReview in Model)
+    {
+        <div class="mb-3">
+            <h4>@gameReview.Title</h4>
+            <p>Genre: @gameReview.Genre</p>
+
+            <p>Average Rating: @(gameReview.Rating) stars</p>
+
+            <form asp-action="SubmitRating" asp-controller="Home" method="post">
+                <input type="hidden" name="gameId" value="@gameReview.Id" />
+                <div class="mb-3">
+                    <label for="rating" class="form-label">Rating (1-10)</label>
+                    <input type="number" class="form-control" id="rating" name="rating" min="1" max="10" required>
+                </div>
+                <button type="submit" class="btn btn-primary mt-2">Submit Rating</button>
+            </form>
+
+            <hr />
+        </div>
+    }
+
+</div>

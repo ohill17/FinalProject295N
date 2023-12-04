@@ -1,0 +1,27 @@
+﻿@model List<FinalProject.Models.GameReview>
+
+@{
+    ViewData["Title"] = "Reviews";
+}
+
+<div class="container mt-5">
+    <div class="row">
+        @foreach (var review in Model)
+        {
+            <div class="col-md-6 mb-4">
+                <div class="card">
+                    
+                    <img src="@review.ImageUrl" class="card-img-top" alt="Game Review Image">
+
+                    <div class="card-body">
+                   
+                        <h5 class="card-title">@review.Title</h5>
+                        <p class="card-text"><strong>Genre:</strong> @review.Genre</p>
+                        <p class="card-text"><strong>Body:</strong> @review.Body</p>
+                        <p class="card-text"><strong>Rating:</strong> @review.Rating</p>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
